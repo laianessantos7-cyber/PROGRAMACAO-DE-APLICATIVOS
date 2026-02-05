@@ -14,5 +14,5 @@
    3) Criar versionamento(commit):
    git commit -m "comandos básicos do git."
 
-   4) Enviar alterações parAa GitHub:
+   4) Enviar alterações para GitHub:
    git push
