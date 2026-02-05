@@ -7,7 +7,7 @@
    1) Trazendo possíveis mudanças do GitHub
    git pull
 
-   2) Adicionar aqrquivos para commit:
+   2) Adicionar arquivos para commit:
    git add .
 
 
@@ -16,3 +16,9 @@
 
    4) Enviar alterações para GitHub:
    git push
+
+
+## Branch
+
+ Mostrar branches no computador :
+ git branch
