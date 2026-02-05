@@ -2,7 +2,7 @@
 
 
 ##  COMANDOS BÁSICOS - GIT
-'
+
 
    1) Trazendo possíveis mudanças do GitHub
    git pull
