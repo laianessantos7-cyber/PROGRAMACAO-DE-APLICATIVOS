@@ -1,0 +1,34 @@
+/* RESET DE CONFIGURAÇÕES GERAIS PARA OS NAVEGADORES. */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #51cedf3d;
+    background-image: url("assets/senai.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+
+}
+h1{
+    
+    color: #0004f5;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 100px;
+    font-family: 'Arial', Gadget, sans-serif;
+    
+
+
+}
+
+p{
+    
+    font-size: 30px;
+    text-align: justify;
+    font-family: 'New Roman', Times, serif;
+}
