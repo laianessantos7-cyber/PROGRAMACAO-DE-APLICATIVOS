@@ -1,34 +1,53 @@
-/* RESET DE CONFIGURAÇÕES GERAIS PARA OS NAVEGADORES. */
+ /* RESET DAS CONFIGURAÇÕES DO NAVEGADOR */
 
-* {
+
+ * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-body{
-    background-color: #51cedf3d;
-    background-image: url("assets/senai.jpg");
+ }
+
+ body {
+    background-color: rgba(241, 194, 194, 0.212);
+    background-image: url("assents/fundo2.jpg");
+
     background-repeat: no-repeat;
-    background-position: center;
+    background-position:center;
     background-size: cover;
     background-attachment: fixed;
 
-}
-h1{
-    
-    color: #0004f5;
+    font-family: 'Comic Sans MS';
+ 
+ }
+
+ h2 {
     text-align: center;
-    margin: 20px 0;
-    font-size: 100px;
-    font-family: 'Arial', Gadget, sans-serif;
-    
+    font-size: 60px;
+    font-family: 'Gigi';
+ }
 
-
-}
-
-p{
-    
-    font-size: 30px;
+ p {
     text-align: justify;
-    font-family: 'New Roman', Times, serif;
+    font-size: 15px;
+    margin: 20px 70px;
+ }
+
+ a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+ }
+
+ img{
+    display: block;
+    max-width: 300px;
+    margin: 10px auto;
+ }
+
+button {
+    display: block;
+    margin: 20px auto;
+    cursor: pointer;
+    padding: 5px 30px;
+    border-radius: 30px
 }
