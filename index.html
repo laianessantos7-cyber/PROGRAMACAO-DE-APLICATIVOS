@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laiane ❤️ Micael</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff6fa5, #ffc3a0);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+}
+
+/* Nome brilhando no fundo */
+.fundo-nome {
+    position: fixed;
+    font-size: 55px;
+    font-weight: bold;
+    color: rgba(255,255,255,0.07);
+    animation: brilho 3s infinite alternate;
+    z-index: 0;
+}
+
+@keyframes brilho {
+    from { text-shadow: 0 0 10px white; }
+    to { text-shadow: 0 0 40px white; }
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    z-index: 1;
+    max-width: 380px;
+}
+
+button {
+    background: white;
+    color: #ff4e8b;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 15px;
+}
+
+button:hover {
+    background: #ffe0ec;
+    transform: scale(1.05);
+}
+
+#contador {
+    margin: 20px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#mensagem {
+    margin-top: 20px;
+    font-size: 18px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="fundo-nome">Laiane ❤️ Micael</div>
+
+<div class="card">
+    <h1>Micael 💖</h1>
+    <p>Tem algo especial reservado pra gente…<br>
+    e o tempo está contando ✨</p>
+
+    <div id="contador"></div>
+
+    <button id="botao">Abrir meu coração 💌</button>
+
+    <div id="mensagem"></div>
+</div>
+
+<audio id="musica" loop>
+  <source src="antes-do-sol-nascer.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const botao = document.getElementById("botao");
+const msg = document.getElementById("mensagem");
+const contador = document.getElementById("contador");
+const musica = document.getElementById("musica");
+
+// 📅 Data do encontro - 28 de Fevereiro às 00:00
+const anoAtual = new Date().getFullYear();
+const dataEncontro = new Date(anoAtual, 1, 28, 0, 0, 0); 
+// Janeiro=0, Fevereiro=1
+
+function atualizarContador() {
+    const agora = new Date();
+    const diferenca = dataEncontro - agora;
+
+    if (diferenca <= 0) {
+        contador.innerHTML =
+        "💖 O dia chegou... é hoje que a gente se encontra ✨";
+        return;
+    }
+
+    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+    const segundos = Math.floor((diferenca / 1000) % 60);
+
+    contador.innerHTML =
+        "⏳ Faltam " + dias + " dias, " +
+        horas + "h " +
+        minutos + "m " +
+        segundos + "s para 28/02 💖";
+}
+
+setInterval(atualizarContador, 1000);
+atualizarContador();
+
+// 💌 Ao clicar
+botao.addEventListener("click", function() {
+    musica.play();
+    msg.innerHTML =
+    "Laiane ❤️ Micael<br><br>" +
+    "Cada segundo que passa só confirma uma coisa…<br>" +
+    "Eu mal posso esperar pelo dia 28/02 ✨💖";
+});
+</script>
+
+</body>
+</html>
