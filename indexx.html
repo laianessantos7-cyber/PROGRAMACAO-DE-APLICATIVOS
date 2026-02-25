@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laiane ❤️ Micael</title>
+
+<meta property="og:title" content="Laiane ❤️ Micael">
+<meta property="og:description" content="Uma história que não foi acaso.">
+<meta property="og:image" content="capa.jpg">
+<meta property="og:type" content="website">
+
+<style>
+:root{
+--bg:#000;
+--text:#fff;
+--accent:#ff2d55;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+background:black;
+color:white;
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
+overflow:hidden;
+}
+
+/* ESTRELAS */
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+/* INTRO */
+#intro{
+position:fixed;
+inset:0;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+font-size:22px;
+animation:fadeOut 3s ease 4s forwards;
+z-index:10;
+}
+
+@keyframes fadeOut{
+to{opacity:0;visibility:hidden;}
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+opacity:0;
+animation:fadeIn 2s ease 4s forwards;
+}
+
+@keyframes fadeIn{
+to{opacity:1;}
+}
+
+h1{
+font-size:42px;
+letter-spacing:-1px;
+}
+
+.accent{
+color:var(--accent);
+text-shadow:0 0 15px var(--accent);
+}
+
+.subtitle{
+margin-top:20px;
+opacity:0.8;
+min-height:60px;
+font-size:18px;
+}
+
+.btn{
+margin-top:30px;
+padding:14px 30px;
+border-radius:30px;
+border:none;
+background:var(--accent);
+color:white;
+font-size:15px;
+cursor:pointer;
+}
+
+/* CARTA */
+#carta{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.95);
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:30px;
+opacity:0;
+visibility:hidden;
+transition:0.5s;
+}
+
+#carta.active{
+opacity:1;
+visibility:visible;
+}
+
+#carta p{
+max-width:400px;
+line-height:1.6;
+font-size:16px;
+}
+
+/* BRILHO */
+.sparkle{
+position:fixed;
+width:8px;
+height:8px;
+background:var(--accent);
+border-radius:50%;
+pointer-events:none;
+animation:spark 0.8s linear forwards;
+}
+
+@keyframes spark{
+to{transform:scale(4);opacity:0;}
+}
+</style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+
+<div id="intro">
+Em um universo de bilhões de pessoas…<br>
+eu encontrei você.
+</div>
+
+<div class="hero">
+<h1>Laiane <span class="accent">❤️</span> Micael</h1>
+<div class="subtitle" id="texto"></div>
+<button class="btn" onclick="abrirCarta()">Desbloquear 💌</button>
+</div>
+
+<div id="carta">
+<div>
+<h2>Para você…</h2>
+<p>
+Tem algo no seu olhar que me provoca.<br><br>
+Algo no seu toque que me arrepia.<br><br>
+E algo na sua presença que me desarma completamente.<br><br>
+Se isso não for destino…<br>
+então o universo está conspirando muito bem.
+</p>
+<br>
+<button class="btn" onclick="fecharCarta()">Fechar</button>
+</div>
+</div>
+
+<!-- ÁUDIOS -->
+<audio id="boom" src="boom.mp3"></audio>
+<audio id="whoosh" src="whoosh.mp3"></audio>
+<audio autoplay loop>
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// SOM CINEMA
+window.addEventListener("load",()=>{
+document.getElementById("boom").play();
+setTimeout(()=>{
+document.getElementById("whoosh").play();
+},1500);
+});
+
+// TEXTO LETRA POR LETRA
+const frase="Não foi coincidência. Foi química. Foi desejo. Foi intensidade.";
+let i=0;
+function digitar(){
+if(i<frase.length){
+document.getElementById("texto").innerHTML+=frase.charAt(i);
+i++;
+setTimeout(digitar,60);
+}
+}
+setTimeout(digitar,4500);
+
+// CARTA
+function abrirCarta(){
+document.getElementById("carta").classList.add("active");
+}
+function fecharCarta(){
+document.getElementById("carta").classList.remove("active");
+}
+
+// ESTRELAS
+const canvas=document.getElementById("stars");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let stars=[];
+for(let i=0;i<120;i++){
+stars.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*1.5,
+d:Math.random()*0.5
+});
+}
+
+function drawStars(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="white";
+stars.forEach(s=>{
+ctx.beginPath();
+ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+ctx.fill();
+s.y+=s.d;
+if(s.y>canvas.height)s.y=0;
+});
+requestAnimationFrame(drawStars);
+}
+drawStars();
+
+// BRILHO AO TOCAR
+document.addEventListener("click",e=>{
+let sparkle=document.createElement("div");
+sparkle.className="sparkle";
+sparkle.style.left=e.clientX+"px";
+sparkle.style.top=e.clientY+"px";
+document.body.appendChild(sparkle);
+setTimeout(()=>sparkle.remove(),800);
+});
+</script>
+
+</body>
+</html>
