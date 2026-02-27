@@ -12,19 +12,18 @@
 
 <style>
 :root{
---bg:#000;
---text:#fff;
-/* Mudei para um tom de roxo/lilás, mas você pode voltar para o rosa (#ff2d55) se quiser */
---accent:#a855f7; 
+--bg: #ff477e; /* Cor principal de fundo (Rosa) */
+--text: #fff;
+--accent: #fff; /* Detalhes em branco para destacar no rosa */
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-background:black;
-color:white;
-font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
-overflow:hidden;
+background: linear-gradient(135deg, #ff477e 0%, #ff8fa3 100%); /* Degradê rosa lindíssimo */
+color: white;
+font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+overflow: hidden;
 }
 
 /* ESTRELAS */
@@ -39,7 +38,7 @@ z-index:-1;
 #intro{
 position:fixed;
 inset:0;
-background:black;
+background: #ff477e; /* Fundo rosa sólido para a introdução */
 display:flex;
 justify-content:center;
 align-items:center;
@@ -77,14 +76,15 @@ letter-spacing:-1px;
 
 .accent{
 color:var(--accent);
-text-shadow:0 0 15px var(--accent);
+text-shadow:0 0 15px rgba(255, 255, 255, 0.8);
 }
 
 .subtitle{
 margin-top:20px;
-opacity:0.8;
+opacity:0.9;
 min-height:60px;
 font-size:18px;
+font-weight: 500;
 }
 
 /* CONTAGEM REGRESSIVA */
@@ -100,12 +100,12 @@ margin: 10px 0 30px 0;
 display: flex;
 flex-direction: column;
 align-items: center;
-background: rgba(168, 85, 247, 0.1); /* Ajustado para a nova cor */
+background: rgba(255, 255, 255, 0.15); /* Fundo branco transparente */
 padding: 10px;
 border-radius: 10px;
 min-width: 65px;
-border: 1px solid rgba(168, 85, 247, 0.3); /* Ajustado para a nova cor */
-box-shadow: 0 0 10px rgba(168, 85, 247, 0.1);
+border: 1px solid rgba(255, 255, 255, 0.4); 
+box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
 .time-box span {
@@ -118,18 +118,21 @@ font-weight: bold;
 font-size: 0.7rem;
 margin-top: 5px;
 letter-spacing: 1px;
+color: rgba(255, 255, 255, 0.9);
 }
 
 .btn{
 padding:14px 30px;
 border-radius:30px;
 border:none;
-background:var(--accent);
-color:white;
+background: var(--accent);
+color: #ff477e; /* Texto do botão em rosa para contrastar com o fundo branco */
+font-weight: bold;
 font-size:15px;
 cursor:pointer;
 transition: transform 0.2s;
 z-index: 5;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .btn:hover {
@@ -140,7 +143,7 @@ transform: scale(1.05);
 #carta{
 position:fixed;
 inset:0;
-background:rgba(0,0,0,0.95);
+background:rgba(0,0,0,0.85); /* Fundo escuro transparente para facilitar a leitura da carta */
 display:flex;
 justify-content:center;
 align-items:center;
@@ -196,7 +199,6 @@ to{transform:scale(4);opacity:0;}
 
 <div id="intro">
 Irmã, você é meu porto seguro, minha melhor amiga e meu pedacinho favorito da vida. Obrigada por estar sempre comigo. Te amo infinitamente.<br>
-
 </div>
 
 <div class="hero">
@@ -266,8 +268,8 @@ function digitar(){
 }
 setTimeout(digitar,4500);
 
-// LÓGICA DA CONTAGEM REGRESSIVA (Configurado para o Dia das Mães de 2026 como exemplo)
-const dataAlvo = new Date("2026-05-10T00:00:00").getTime();
+// LÓGICA DA CONTAGEM REGRESSIVA (Configurado para 10 de Dezembro de 2026)
+const dataAlvo = new Date("2026-12-10T00:00:00").getTime();
 
 const timer = setInterval(function() {
     const agora = new Date().getTime();
@@ -294,7 +296,7 @@ const timer = setInterval(function() {
         clearInterval(timer);
         document.getElementById("countdown").innerHTML = `
             <div class="time-box" style="padding: 15px 30px;">
-                <span style="font-size: 1.2rem;">Um dia especial! ❤️</span>
+                <span style="font-size: 1.2rem;">Feliz Aniversário! ❤️</span>
             </div>
         `;
     }
@@ -331,7 +333,7 @@ for(let j=0;j<120;j++){
 
 function drawStars(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle="white";
+    ctx.fillStyle="rgba(255, 255, 255, 0.8)"; /* Estrelas levemente translúcidas */
     stars.forEach(s=>{
         ctx.beginPath();
         ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
