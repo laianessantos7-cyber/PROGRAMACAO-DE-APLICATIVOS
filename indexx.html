@@ -44,6 +44,7 @@ justify-content:center;
 align-items:center;
 text-align:center;
 font-size:22px;
+padding: 20px;
 animation:fadeOut 3s ease 4s forwards;
 z-index:10;
 }
@@ -88,6 +89,8 @@ font-size:18px;
 /* CONTAGEM REGRESSIVA */
 .countdown {
 display: flex;
+flex-wrap: wrap; /* Permite quebrar linha se a tela for muito pequena */
+justify-content: center;
 gap: 15px;
 margin: 10px 0 30px 0;
 }
@@ -125,6 +128,7 @@ color:white;
 font-size:15px;
 cursor:pointer;
 transition: transform 0.2s;
+z-index: 5;
 }
 
 .btn:hover {
@@ -144,6 +148,7 @@ padding:30px;
 opacity:0;
 visibility:hidden;
 transition:0.5s;
+z-index: 20;
 }
 
 #carta.active{
@@ -166,10 +171,21 @@ background:var(--accent);
 border-radius:50%;
 pointer-events:none;
 animation:spark 0.8s linear forwards;
+z-index: 999;
 }
 
 @keyframes spark{
 to{transform:scale(4);opacity:0;}
+}
+
+/* AJUSTES PARA CELULAR (Telas menores que 480px) */
+@media (max-width: 480px) {
+  h1 { font-size: 34px; }
+  #intro { font-size: 18px; }
+  .countdown { gap: 10px; }
+  .time-box { min-width: 55px; padding: 8px; }
+  .time-box span { font-size: 1.3rem; }
+  .time-box small { font-size: 0.6rem; }
 }
 </style>
 </head>
@@ -209,35 +225,46 @@ então o universo está conspirando muito bem.
 
 <audio id="boom" src="boom.mp3"></audio>
 <audio id="whoosh" src="whoosh.mp3"></audio>
-<audio autoplay loop>
+<audio id="musicaFundo" loop>
 <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-// SOM CINEMA
+// CONTROLE DE ÁUDIOS PARA CELULAR
+let audiosIniciados = false;
+const boom = document.getElementById("boom");
+const whoosh = document.getElementById("whoosh");
+const musicaFundo = document.getElementById("musicaFundo");
+
+// Tenta tocar automaticamente (funciona no PC, falha no celular)
 window.addEventListener("load",()=>{
-    // Tratamento de erro simples caso o navegador bloqueie o autoplay
-    let boomAudio = document.getElementById("boom");
-    if(boomAudio) {
-        boomAudio.play().catch(e => console.log("Áudio bloqueado pelo navegador"));
-    }
+    if(boom) boom.play().catch(() => console.log("Áudio aguardando toque"));
     setTimeout(()=>{
-        let whooshAudio = document.getElementById("whoosh");
-        if(whooshAudio) {
-            whooshAudio.play().catch(e => console.log("Áudio bloqueado pelo navegador"));
-        }
+        if(whoosh) whoosh.play().catch(() => {});
+        if(musicaFundo) musicaFundo.play().catch(() => {});
     },1500);
 });
+
+// Força a música de fundo a tocar no primeiro toque na tela (solução para celular)
+function iniciarAudiosNoToque() {
+    if(!audiosIniciados && musicaFundo) {
+        musicaFundo.play().catch(()=>console.log("Erro ao tocar música"));
+        audiosIniciados = true;
+    }
+}
+document.addEventListener("click", iniciarAudiosNoToque);
+document.addEventListener("touchstart", iniciarAudiosNoToque);
+
 
 // TEXTO LETRA POR LETRA
 const frase="Não foi coincidência.";
 let i=0;
 function digitar(){
-if(i<frase.length){
-document.getElementById("texto").innerHTML+=frase.charAt(i);
-i++;
-setTimeout(digitar,60);
-}
+    if(i<frase.length){
+        document.getElementById("texto").innerHTML+=frase.charAt(i);
+        i++;
+        setTimeout(digitar,60);
+    }
 }
 setTimeout(digitar,4500);
 
@@ -253,7 +280,6 @@ const timer = setInterval(function() {
     const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
     const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
 
-    // Formata para ter sempre dois dígitos (ex: 09 em vez de 9)
     const h = horas.toString().padStart(2, '0');
     const m = minutos.toString().padStart(2, '0');
     const s = segundos.toString().padStart(2, '0');
@@ -278,10 +304,10 @@ const timer = setInterval(function() {
 
 // CARTA
 function abrirCarta(){
-document.getElementById("carta").classList.add("active");
+    document.getElementById("carta").classList.add("active");
 }
 function fecharCarta(){
-document.getElementById("carta").classList.remove("active");
+    document.getElementById("carta").classList.remove("active");
 }
 
 // ESTRELAS
@@ -297,36 +323,45 @@ resizeCanvas();
 
 let stars=[];
 for(let j=0;j<120;j++){
-stars.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*1.5,
-d:Math.random()*0.5
-});
+    stars.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        r:Math.random()*1.5,
+        d:Math.random()*0.5
+    });
 }
 
 function drawStars(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-ctx.fillStyle="white";
-stars.forEach(s=>{
-ctx.beginPath();
-ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-ctx.fill();
-s.y+=s.d;
-if(s.y>canvas.height)s.y=0;
-});
-requestAnimationFrame(drawStars);
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle="white";
+    stars.forEach(s=>{
+        ctx.beginPath();
+        ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+        ctx.fill();
+        s.y+=s.d;
+        if(s.y>canvas.height)s.y=0;
+    });
+    requestAnimationFrame(drawStars);
 }
 drawStars();
 
-// BRILHO AO TOCAR
-document.addEventListener("click",e=>{
-let sparkle=document.createElement("div");
-sparkle.className="sparkle";
-sparkle.style.left=e.clientX+"px";
-sparkle.style.top=e.clientY+"px";
-document.body.appendChild(sparkle);
-setTimeout(()=>sparkle.remove(),800);
+// BRILHO AO TOCAR (Adaptado para clique e toque no celular)
+function criarBrilho(x, y) {
+    let sparkle=document.createElement("div");
+    sparkle.className="sparkle";
+    sparkle.style.left=x+"px";
+    sparkle.style.top=y+"px";
+    document.body.appendChild(sparkle);
+    setTimeout(()=>sparkle.remove(),800);
+}
+
+document.addEventListener("click", e => {
+    criarBrilho(e.clientX, e.clientY);
+});
+
+document.addEventListener("touchstart", e => {
+    let touch = e.touches[0];
+    criarBrilho(touch.clientX, touch.clientY);
 });
 </script>
 
