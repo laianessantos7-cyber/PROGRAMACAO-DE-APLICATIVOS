@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Laiane ❤️ Micael</title>
+<title>Lorrany ❤️ Melhor Irmã</title>
 
-<meta property="og:title" content="Laiane ❤️ Micael">
-<meta property="og:description" content="Uma história que não foi acaso.">
+<meta property="og:title" content="Lorrany ❤️ Melhor Irmã">
+<meta property="og:description" content="Uma homenagem para a melhor irmã e mãe.">
 <meta property="og:image" content="capa.jpg">
 <meta property="og:type" content="website">
 
@@ -14,7 +14,8 @@
 :root{
 --bg:#000;
 --text:#fff;
---accent:#ff2d55;
+/* Mudei para um tom de roxo/lilás, mas você pode voltar para o rosa (#ff2d55) se quiser */
+--accent:#a855f7; 
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -89,7 +90,7 @@ font-size:18px;
 /* CONTAGEM REGRESSIVA */
 .countdown {
 display: flex;
-flex-wrap: wrap; /* Permite quebrar linha se a tela for muito pequena */
+flex-wrap: wrap; 
 justify-content: center;
 gap: 15px;
 margin: 10px 0 30px 0;
@@ -99,12 +100,12 @@ margin: 10px 0 30px 0;
 display: flex;
 flex-direction: column;
 align-items: center;
-background: rgba(255, 45, 85, 0.1);
+background: rgba(168, 85, 247, 0.1); /* Ajustado para a nova cor */
 padding: 10px;
 border-radius: 10px;
 min-width: 65px;
-border: 1px solid rgba(255, 45, 85, 0.3);
-box-shadow: 0 0 10px rgba(255, 45, 85, 0.1);
+border: 1px solid rgba(168, 85, 247, 0.3); /* Ajustado para a nova cor */
+box-shadow: 0 0 10px rgba(168, 85, 247, 0.1);
 }
 
 .time-box span {
@@ -178,7 +179,7 @@ z-index: 999;
 to{transform:scale(4);opacity:0;}
 }
 
-/* AJUSTES PARA CELULAR (Telas menores que 480px) */
+/* AJUSTES PARA CELULAR */
 @media (max-width: 480px) {
   h1 { font-size: 34px; }
   #intro { font-size: 18px; }
@@ -194,32 +195,31 @@ to{transform:scale(4);opacity:0;}
 <canvas id="stars"></canvas>
 
 <div id="intro">
-Em um universo de bilhões de pessoas…<br>
-eu encontrei você.
+Irmã, você é meu porto seguro, minha melhor amiga e meu pedacinho favorito da vida. Obrigada por estar sempre comigo. Te amo infinitamente.<br>
+
 </div>
 
 <div class="hero">
-<h1>Laiane <span class="accent">❤️</span> Micael</h1>
+<h1>Lorrany <span class="accent">❤️</span> Minha Irmã</h1>
 <div class="subtitle" id="texto"></div>
 
 <div id="countdown" class="countdown"></div>
 
-<button class="btn" onclick="abrirCarta()">Desbloquear 💌</button>
+<button class="btn" onclick="abrirCarta()">Abrir Mensagem 💌</button>
 </div>
 
 <div id="carta">
 <div>
-<h2>Para você…</h2>
+<h2>Para a melhor irmã e mãe…</h2>
 <br>
 <p>
-Tem algo no seu olhar que me encanta.<br><br>
-Algo no seu toque que me arrepia.<br><br>
-E algo no seu cheiro que me desarma completamente.<br><br>
-Se isso não for destino…<br>
-então o universo está conspirando muito bem.
+Ver a mulher forte e incrível que você se tornou me enche de orgulho.<br><br>
+Você não é apenas uma irmã maravilhosa, mas uma mãe espetacular para o seu pequeno.<br><br>
+Quero que saiba que estarei sempre aqui por vocês dois, aplaudindo cada vitória e apoiando no que for preciso.<br><br>
+Amo muito você, Obrigado por tudo e por tanto!
 </p>
 <br>
-<button class="btn" onclick="fecharCarta()">Fechar</button>
+<button class="btn" onclick="fecharCarta()">Guardar no coração ❤️</button>
 </div>
 </div>
 
@@ -236,7 +236,6 @@ const boom = document.getElementById("boom");
 const whoosh = document.getElementById("whoosh");
 const musicaFundo = document.getElementById("musicaFundo");
 
-// Tenta tocar automaticamente (funciona no PC, falha no celular)
 window.addEventListener("load",()=>{
     if(boom) boom.play().catch(() => console.log("Áudio aguardando toque"));
     setTimeout(()=>{
@@ -245,7 +244,6 @@ window.addEventListener("load",()=>{
     },1500);
 });
 
-// Força a música de fundo a tocar no primeiro toque na tela (solução para celular)
 function iniciarAudiosNoToque() {
     if(!audiosIniciados && musicaFundo) {
         musicaFundo.play().catch(()=>console.log("Erro ao tocar música"));
@@ -257,7 +255,7 @@ document.addEventListener("touchstart", iniciarAudiosNoToque);
 
 
 // TEXTO LETRA POR LETRA
-const frase="Não foi coincidência.";
+const frase="Mais que irmãs, amigas para sempre.";
 let i=0;
 function digitar(){
     if(i<frase.length){
@@ -268,8 +266,8 @@ function digitar(){
 }
 setTimeout(digitar,4500);
 
-// LÓGICA DA CONTAGEM REGRESSIVA
-const dataAlvo = new Date("2026-02-28T19:00:00").getTime();
+// LÓGICA DA CONTAGEM REGRESSIVA (Configurado para o Dia das Mães de 2026 como exemplo)
+const dataAlvo = new Date("2026-05-10T00:00:00").getTime();
 
 const timer = setInterval(function() {
     const agora = new Date().getTime();
@@ -296,7 +294,7 @@ const timer = setInterval(function() {
         clearInterval(timer);
         document.getElementById("countdown").innerHTML = `
             <div class="time-box" style="padding: 15px 30px;">
-                <span style="font-size: 1.2rem;">Chegou a hora! ❤️</span>
+                <span style="font-size: 1.2rem;">Um dia especial! ❤️</span>
             </div>
         `;
     }
@@ -345,7 +343,7 @@ function drawStars(){
 }
 drawStars();
 
-// BRILHO AO TOCAR (Adaptado para clique e toque no celular)
+// BRILHO AO TOCAR
 function criarBrilho(x, y) {
     let sparkle=document.createElement("div");
     sparkle.className="sparkle";
