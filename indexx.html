@@ -85,8 +85,38 @@ min-height:60px;
 font-size:18px;
 }
 
+/* CONTAGEM REGRESSIVA */
+.countdown {
+display: flex;
+gap: 15px;
+margin: 10px 0 30px 0;
+}
+
+.time-box {
+display: flex;
+flex-direction: column;
+align-items: center;
+background: rgba(255, 45, 85, 0.1);
+padding: 10px;
+border-radius: 10px;
+min-width: 65px;
+border: 1px solid rgba(255, 45, 85, 0.3);
+box-shadow: 0 0 10px rgba(255, 45, 85, 0.1);
+}
+
+.time-box span {
+color: var(--accent);
+font-size: 1.5rem;
+font-weight: bold;
+}
+
+.time-box small {
+font-size: 0.7rem;
+margin-top: 5px;
+letter-spacing: 1px;
+}
+
 .btn{
-margin-top:30px;
 padding:14px 30px;
 border-radius:30px;
 border:none;
@@ -94,6 +124,11 @@ background:var(--accent);
 color:white;
 font-size:15px;
 cursor:pointer;
+transition: transform 0.2s;
+}
+
+.btn:hover {
+transform: scale(1.05);
 }
 
 /* CARTA */
@@ -150,16 +185,20 @@ eu encontrei você.
 <div class="hero">
 <h1>Laiane <span class="accent">❤️</span> Micael</h1>
 <div class="subtitle" id="texto"></div>
+
+<div id="countdown" class="countdown"></div>
+
 <button class="btn" onclick="abrirCarta()">Desbloquear 💌</button>
 </div>
 
 <div id="carta">
 <div>
 <h2>Para você…</h2>
+<br>
 <p>
-Tem algo no seu olhar que me provoca.<br><br>
+Tem algo no seu olhar que me encanta.<br><br>
 Algo no seu toque que me arrepia.<br><br>
-E algo na sua presença que me desarma completamente.<br><br>
+E algo no seu cheiro que me desarma completamente.<br><br>
 Se isso não for destino…<br>
 então o universo está conspirando muito bem.
 </p>
@@ -168,7 +207,6 @@ então o universo está conspirando muito bem.
 </div>
 </div>
 
-<!-- ÁUDIOS -->
 <audio id="boom" src="boom.mp3"></audio>
 <audio id="whoosh" src="whoosh.mp3"></audio>
 <audio autoplay loop>
@@ -178,14 +216,21 @@ então o universo está conspirando muito bem.
 <script>
 // SOM CINEMA
 window.addEventListener("load",()=>{
-document.getElementById("boom").play();
-setTimeout(()=>{
-document.getElementById("whoosh").play();
-},1500);
+    // Tratamento de erro simples caso o navegador bloqueie o autoplay
+    let boomAudio = document.getElementById("boom");
+    if(boomAudio) {
+        boomAudio.play().catch(e => console.log("Áudio bloqueado pelo navegador"));
+    }
+    setTimeout(()=>{
+        let whooshAudio = document.getElementById("whoosh");
+        if(whooshAudio) {
+            whooshAudio.play().catch(e => console.log("Áudio bloqueado pelo navegador"));
+        }
+    },1500);
 });
 
 // TEXTO LETRA POR LETRA
-const frase="Não foi coincidência. Foi química. Foi desejo. Foi intensidade.";
+const frase="Não foi coincidência.";
 let i=0;
 function digitar(){
 if(i<frase.length){
@@ -195,6 +240,41 @@ setTimeout(digitar,60);
 }
 }
 setTimeout(digitar,4500);
+
+// LÓGICA DA CONTAGEM REGRESSIVA
+const dataAlvo = new Date("2026-02-28T19:00:00").getTime();
+
+const timer = setInterval(function() {
+    const agora = new Date().getTime();
+    const distancia = dataAlvo - agora;
+
+    const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+    // Formata para ter sempre dois dígitos (ex: 09 em vez de 9)
+    const h = horas.toString().padStart(2, '0');
+    const m = minutos.toString().padStart(2, '0');
+    const s = segundos.toString().padStart(2, '0');
+
+    document.getElementById("countdown").innerHTML = `
+        <div class="time-box"><span>${dias}</span><small>DIAS</small></div>
+        <div class="time-box"><span>${h}</span><small>HORAS</small></div>
+        <div class="time-box"><span>${m}</span><small>MIN</small></div>
+        <div class="time-box"><span>${s}</span><small>SEG</small></div>
+    `;
+
+    // Quando o tempo acabar
+    if (distancia < 0) {
+        clearInterval(timer);
+        document.getElementById("countdown").innerHTML = `
+            <div class="time-box" style="padding: 15px 30px;">
+                <span style="font-size: 1.2rem;">Chegou a hora! ❤️</span>
+            </div>
+        `;
+    }
+}, 1000);
 
 // CARTA
 function abrirCarta(){
@@ -207,11 +287,16 @@ document.getElementById("carta").classList.remove("active");
 // ESTRELAS
 const canvas=document.getElementById("stars");
 const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
+
+function resizeCanvas() {
+    canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
 
 let stars=[];
-for(let i=0;i<120;i++){
+for(let j=0;j<120;j++){
 stars.push({
 x:Math.random()*canvas.width,
 y:Math.random()*canvas.height,
