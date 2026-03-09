@@ -5,7 +5,7 @@
 
 // Use todos os comandos vistos em vetores após criar a lista.
 
-const listaDeNomes = ['Lilian','Dourival','Filipe']
+const listaDeNomes = ['Lilian','Dourival','Filipe, Jane']
 
 console.log("Exibindo todos os elementos:")
 console.log(listaDeNomes)
@@ -14,12 +14,10 @@ console.log("Exibindo apenas o primeiro elemento:")
 console.log(listaDeNomes[0])
 
 console.log("Adicionando um elemento:")
-listaDeNomes.push('Jane')
-console.log(listaDeNomes)
-
-console.log("Adicionando outro elemento:")
 listaDeNomes.push('Raimunda')
 console.log(listaDeNomes)
+
+
 
 console.log("Adicionando outro elemento:")
 listaDeNomes.push('Alice')
