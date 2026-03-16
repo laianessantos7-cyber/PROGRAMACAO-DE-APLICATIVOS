@@ -3,7 +3,7 @@
 /* Animação para o Creeper "pulsar" */
 @keyframes pulsar {
     0% { box-shadow: 0 0 10px #00a800, 10px 10px 0px rgba(0,0,0,0.5); }
-    50% { box-shadow: 0 0 25px #00ff00, 10px 10px 0px rgba(0,0,0,0.5); }
+    50% { box-shadow: 0 0 25px #00ff00c9, 10px 10px 0px rgba(0,0,0,0.5); }
     100% { box-shadow: 0 0 10px #00a800, 10px 10px 0px rgba(0,0,0,0.5); }
 }
 
