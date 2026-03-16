@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Animação para o Creeper "pulsar" */
+@keyframes pulsar {
+    0% { box-shadow: 0 0 10px #00a800, 10px 10px 0px rgba(0,0,0,0.5); }
+    50% { box-shadow: 0 0 25px #00ff00, 10px 10px 0px rgba(0,0,0,0.5); }
+    100% { box-shadow: 0 0 10px #00a800, 10px 10px 0px rgba(0,0,0,0.5); }
+}
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #262626; /* Cor "Deepslate" */
+    /* Padrão de pedra do fundo */
+    background-image: repeating-conic-gradient(#1a1a1a 0% 25%, #262626 0% 50%) 50% / 60px 60px;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+}
+
+.container {
+    background-color: #484848; /* Cor do inventário */
+    border: 4px solid #000;
+    border-top-color: #787878;
+    border-left-color: #787878;
+    padding: 30px;
+    position: relative; /* Necessário para posicionar o Creeper */
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.5);
+    text-align: center;
+    width: 380px;
+    transition: all 0.3s ease;
+}
+
+/* O Rosto do Creeper em CSS Puro */
+.creeper-face {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px auto; /* Centraliza e dá espaço embaixo */
+    background-color: #00ff00; /* Verde limão */
+    
+    /* Desenho dos olhos e boca com gradientes (Técnica Profissional) */
+    background-image: 
+        /* Olho Esquerdo */
+        linear-gradient(black, black) ,
+        /* Olho Direito */
+        linear-gradient(black, black) ,
+        /* Boca - Topo */
+        linear-gradient(black, black) ,
+        /* Boca - Base */
+        linear-gradient(black, black) ,
+        /* Boca - Conector Direito */
+        linear-gradient(black, black) ,
+        /* Boca - Conector Esquerdo */
+        linear-gradient(black, black);
+
+    background-size: 
+        30px 30px, /* Olho E */
+        30px 30px, /* Olho D */
+        60px 30px, /* Boca Topo */
+        60px 30px, /* Boca Base */
+        30px 30px, /* Conector D */
+        30px 30px; /* Conector E */
+
+    background-position: 
+        15px 15px, /* Olho E */
+        75px 15px, /* Olho D */
+        30px 45px, /* Boca Topo */
+        30px 90px, /* Boca Base */
+        60px 60px, /* Conector D */
+        30px 60px; /* Conector E */
+
+    background-repeat: no-repeat;
+    
+    border: 4px solid #000;
+    image-rendering: pixelated; /* Mantém as bordas nítidas */
+    
+    /* Efeito de brilho pulsar */
+    animation: pulsar 3s infinite ease-in-out;
+    transition: all 0.2s ease;
+}
+
+/* Efeito ao passar o mouse no container */
+.container:hover {
+    transform: scale(1.02);
+    border-color: #00ff00;
+}
+
+h1 {
+    font-size: 16px;
+    color: #ffff55; /* Amarelo Minecraft */
+    text-shadow: 2px 2px 0px #3f3f00;
+    margin-top: 0;
+}
+
+label {
+    display: block;
+    font-size: 10px;
+    color: #bfbfbf;
+}
+
+input {
+    width: 80%;
+    padding: 12px;
+    background-color: #000;
+    border: 2px solid #555;
+    color: #00ff00;
+    font-family: 'Press Start 2P', cursive;
+    margin: 15px 0;
+    text-align: center;
+    outline: none;
+}
+
+input:focus {
+    border-color: #00ff00;
+}
+
+button {
+    background-color: #707070;
+    color: white;
+    border: 3px solid #000;
+    border-top-color: #aaa;
+    border-left-color: #aaa;
+    padding: 12px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    transition: all 0.1s ease;
+}
+
+button:hover {
+    background-color: #00a800; /* Verde ao passar o mouse */
+    color: #ffff55;
+}
+
+#resultadoTabuada {
+    margin-top: 20px;
+    background: rgba(0,0,0,0.5);
+    padding: 15px;
+    font-size: 12px;
+    line-height: 1.8;
+    color: #00ff00;
+    text-align: left;
+    max-height: 200px;
+    overflow-y: auto;
+}
