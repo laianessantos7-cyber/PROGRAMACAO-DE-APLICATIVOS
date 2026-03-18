@@ -13,91 +13,75 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #262626; /* Cor "Deepslate" */
-    /* Padrão de pedra do fundo */
-    background-image: repeating-conic-gradient(#1a1a1a 0% 25%, #262626 0% 50%) 50% / 60px 60px;
     font-family: 'Press Start 2P', cursive;
     color: white;
+
+    /* CONFIGURAÇÃO DA IMAGEM DE FUNDO */
+    background-image: url("assents/fundo.jpg"); /* Verifique se a pasta chama 'assents' ou 'assets' */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #262626; /* Cor de reserva */
+}
+
+/* Camada escura para dar contraste ao painel */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
 }
 
 .container {
-    background-color: #484848; /* Cor do inventário */
+    background-color: rgba(72, 72, 72, 0.9); /* Cinza inventário semi-transparente */
     border: 4px solid #000;
     border-top-color: #787878;
     border-left-color: #787878;
     padding: 30px;
-    position: relative; /* Necessário para posicionar o Creeper */
+    position: relative;
     box-shadow: 10px 10px 0px rgba(0,0,0,0.5);
     text-align: center;
     width: 380px;
     transition: all 0.3s ease;
+    backdrop-filter: blur(5px); /* Efeito de desfoque no fundo */
 }
 
-/* O Rosto do Creeper em CSS Puro */
-.creeper-face {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 20px auto; /* Centraliza e dá espaço embaixo */
-    background-color: #00ff00; /* Verde limão */
-    
-    /* Desenho dos olhos e boca com gradientes (Técnica Profissional) */
-    background-image: 
-        /* Olho Esquerdo */
-        linear-gradient(black, black) ,
-        /* Olho Direito */
-        linear-gradient(black, black) ,
-        /* Boca - Topo */
-        linear-gradient(black, black) ,
-        /* Boca - Base */
-        linear-gradient(black, black) ,
-        /* Boca - Conector Direito */
-        linear-gradient(black, black) ,
-        /* Boca - Conector Esquerdo */
-        linear-gradient(black, black);
-
-    background-size: 
-        30px 30px, /* Olho E */
-        30px 30px, /* Olho D */
-        60px 30px, /* Boca Topo */
-        60px 30px, /* Boca Base */
-        30px 30px, /* Conector D */
-        30px 30px; /* Conector E */
-
-    background-position: 
-        15px 15px, /* Olho E */
-        75px 15px, /* Olho D */
-        30px 45px, /* Boca Topo */
-        30px 90px, /* Boca Base */
-        60px 60px, /* Conector D */
-        30px 60px; /* Conector E */
-
-    background-repeat: no-repeat;
-    
-    border: 4px solid #000;
-    image-rendering: pixelated; /* Mantém as bordas nítidas */
-    
-    /* Efeito de brilho pulsar */
-    animation: pulsar 3s infinite ease-in-out;
-    transition: all 0.2s ease;
-}
-
-/* Efeito ao passar o mouse no container */
 .container:hover {
     transform: scale(1.02);
     border-color: #00ff00;
 }
 
+/* Rosto do Creeper */
+.creeper-face {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px auto;
+    background-color: #00ff00;
+    background-image: 
+        linear-gradient(black, black), linear-gradient(black, black),
+        linear-gradient(black, black), linear-gradient(black, black),
+        linear-gradient(black, black), linear-gradient(black, black);
+    background-size: 30px 30px, 30px 30px, 60px 30px, 60px 30px, 30px 30px, 30px 30px;
+    background-position: 15px 15px, 75px 15px, 30px 45px, 30px 90px, 60px 60px, 30px 60px;
+    background-repeat: no-repeat;
+    border: 4px solid #000;
+    image-rendering: pixelated;
+    animation: pulsar 3s infinite ease-in-out;
+}
+
 h1 {
     font-size: 16px;
-    color: #ffff55; /* Amarelo Minecraft */
+    color: #ffff55;
     text-shadow: 2px 2px 0px #3f3f00;
-    margin-top: 0;
 }
 
 label {
     display: block;
     font-size: 10px;
     color: #bfbfbf;
+    margin-bottom: 10px;
 }
 
 input {
@@ -107,13 +91,9 @@ input {
     border: 2px solid #555;
     color: #00ff00;
     font-family: 'Press Start 2P', cursive;
-    margin: 15px 0;
+    margin-bottom: 20px;
     text-align: center;
     outline: none;
-}
-
-input:focus {
-    border-color: #00ff00;
 }
 
 button {
@@ -125,18 +105,17 @@ button {
     padding: 12px;
     cursor: pointer;
     font-family: 'Press Start 2P', cursive;
-    font-size: 10px;
-    transition: all 0.1s ease;
+    width: 100%;
 }
 
 button:hover {
-    background-color: #00a800; /* Verde ao passar o mouse */
+    background-color: #00a800;
     color: #ffff55;
 }
 
 #resultadoTabuada {
     margin-top: 20px;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.7);
     padding: 15px;
     font-size: 12px;
     line-height: 1.8;
