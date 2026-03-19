@@ -1,77 +1,32 @@
-:root {
-    --vermelho: #e21e26;
-    --preto: #000000;
-    --branco: #ffffff;
-}
-
 body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background-color: #000;
-    overflow-x: hidden;
-}
-
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://www.galaticosonline.com/media/_versions/2025/08/img_5273_widexl.jpeg');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.5; 
-    z-index: -1;
+    height: 100vh;
+    margin: 0;
 }
 
 .container {
-    background-color: rgba(0, 0, 0, 0.75); /* Escureci um pouco para dar mais contraste */
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(224, 0, 0, 0.6);
-    width: 90%;
-    max-width: 450px;
-    text-align: center;
-    border-top: 10px solid var(--vermelho);
-    position: relative;
-}
-
-.logo-vitoria {
-    width: 110px;
-    margin-bottom: 10px;
-}
-
-.card-atividade {
     background-color: #ffffff;
-    border-left: 5px solid var(--preto);
-    padding: 15px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
     margin-bottom: 20px;
-    text-align: left;
-    font-size: 0.85rem;
-    color: #ff0000;
+    border-radius: 5px;
 }
 
-.card-atividade h3 {
-    margin: 0 0 5px 0;
-    color: var(--vermelho);
-    font-size: 1.1rem;
-}
-
-hr {
-    border: 0;
-    border-top: 1px solid #444;
+h2 {
+    color: #333;
     margin-bottom: 20px;
-}
-
-h1 {
-    font-size: 1.4rem;
-    color: var(--vermelho);
-    text-transform: uppercase;
 }
 
 .input-group {
@@ -81,60 +36,46 @@ h1 {
 
 label {
     display: block;
-    font-weight: bold;
     margin-bottom: 5px;
-    color: var(--vermelho); /* TEXTO PRIMEIRO E SEGUNDO NÚMERO EM VERMELHO */
+    color: #555;
+    font-weight: bold;
 }
 
 input {
     width: 100%;
-    padding: 12px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
+    padding: 8px;
     box-sizing: border-box;
-    background-color: rgba(255, 255, 255, 0.9);
-}
-
-input:focus {
-    border-color: var(--vermelho);
-    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 button {
     width: 100%;
-    padding: 15px;
-    background-color: var(--preto);
-    color: var(--vermelho); /* Cor do texto do botão */
-    border: 1px solid var(--vermelho);
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 1rem;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
-    transition: 0.3s;
+    margin-top: 10px;
 }
 
 button:hover {
-    background-color: var(--vermelho);
-    color: white;
+    background-color: #0056b3;
 }
 
-#resultado {
+.resultado {
     margin-top: 20px;
-    text-align: left;
-    padding: 15px;
-    background: #fff;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    color: #000;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-.hidden { display: none; }
-
-.linha-resultado {
-    padding: 8px 0;
-    border-bottom: 1px solid #f1f1f1;
+/* Classes para mudar a cor do texto dependendo do resultado */
+.aprovado {
+    color: #28a745; /* Verde */
 }
 
-.linha-resultado strong {
-    color: var(--vermelho);
+.reprovado {
+    color: #dc3545; /* Vermelho */
 }

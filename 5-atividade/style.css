@@ -1,0 +1,120 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    text-align: center;
+    position: relative;
+    background-color: #1a1a1a;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url("assets/fundo_frutas.jpg"); /* Use uma imagem de frutas aqui */
+    background-position: center;
+    background-size: cover;
+    opacity: 0.4; /* Transparência da imagem de fundo */
+    z-index: -1;
+}
+
+header {
+    background-color: rgba(196, 30, 58, 0.85); /* Vermelho maçã com transparência */
+    padding: 20px;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+main {
+    margin: 60px auto;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.7); /* Transparência escura */
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    width: 85%;
+    max-width: 450px;
+    color: white;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+input {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    width: 80px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* BOTÃO MODERNO COM EFEITOS */
+button {
+    padding: 12px 25px;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(196, 30, 90, 0.4);
+    text-transform: uppercase;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(196, 30, 90, 0.6);
+    filter: brightness(1.2);
+}
+
+#resultado {
+    margin-top: 30px;
+    font-size: 1.5em;
+    color: #ffd700; /* Destaque em dourado para o preço */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+
+
+/* Estilo para padronizar AMBOS os cards */
+.card-exercicio, main {
+    margin: 30px auto; /* Centraliza horizontalmente e dá espaço entre eles */
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.7); /* Mesma transparência escura */
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    width: 85%;
+    max-width: 450px;
+    color: white;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box; /* Garante que o padding não estoure a largura */
+}
+
+/* Ajustes específicos para o texto do card de exercício */
+.card-exercicio {
+    text-align: left; /* Mantém o texto do enunciado alinhado à esquerda como na imagem */
+}
+
+.card-exercicio h2 {
+    margin-top: 0;
+    font-size: 1.8rem;
+    color: #fff;
+    text-align: center; /* Título centralizado */
+    border-bottom: 2px solid #c41e3a;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.card-exercicio p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Removemos a margem duplicada do main que estava no seu código anterior */
+main {
+    margin-top: 0; 
+}

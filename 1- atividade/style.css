@@ -17,7 +17,7 @@ body {
     color: white;
 
     /* CONFIGURAÇÃO DA IMAGEM DE FUNDO */
-    background-image: url("assents/fundo.jpg"); /* Verifique se a pasta chama 'assents' ou 'assets' */
+    background-image: url("assets/fundo.jpg"); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

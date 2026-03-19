@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Voto</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+    <header>
+        <div class="logo">🗳️ <span>VotaBrasil</span></div>
+    </header>
+    <main>
+        <section class="exercicio-info">
+            <h3>Exercicio 4:</h3>
+            <ul>
+                <li>Crie um site para informar se uma pessoa é obrigada a votar.</li>
+                <li>Considere que a regra é: </li>
+                <li>Menores de 16: Não podem votar</li>
+                <li>Entre 16 e 17 anos: Voto opcional</li>
+                <li>A partir de 18 anos: Voto obrigatório</li>
+                <li>Maiores que 65 anos: Não são obrigados a votar</li>
+            </ul>
+        </section>
+
+        <hr> <h1>Consulte sua obrigatoriedade</h1>
+
+    <main>
+        <h1>Consulte sua obrigatoriedade</h1>
+        <p>Insira sua idade para saber se você deve votar:</p>
+        
+        <div class="input-group">
+            <input type="number" id="txtidade" placeholder="Ex: 25">
+            <button onclick="verificar()">Verificar</button>
+        </div>
+
+        <div id="resultado">
+            O resultado aparecerá aqui...
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
