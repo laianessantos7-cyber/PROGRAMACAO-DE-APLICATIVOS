@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuada Spider </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Wrapper envolvendo o conteúdo -->
+    <div class="wrapper">
+         <!-- LOGO -->
+        <img src="assets/logo.png"class="logo">
+        <div class="logo"></div>
+        <div class="container">
+            <h1>TABUADA DO SPIDER-MAN </h1>
+
+            <label for="numero">DIGITE UM NÚMERO:</label>
+            <input type="number" id="numero" placeholder="Ex: 7">
+
+            <label for="operacao">ESCOLHA A OPERAÇÃO:</label>
+            <select id="operacao">
+                <option value="soma">Soma (+)</option>
+                <option value="subtracao">Subtração (-)</option>
+                <option value="multiplicacao">Multiplicação (x)</option>
+                <option value="divisao">Divisão (÷)</option>
+                <option value="todas">Todas as Operações</option>
+            </select>
+
+            <button onclick="gerarTabuada()">GERAR TABUADA</button>
+
+            <div id="resultadoTabuada">
+                AGUARDANDO ESCOLHA...
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
