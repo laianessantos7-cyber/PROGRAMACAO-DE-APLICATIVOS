@@ -1,5 +1,6 @@
-import '.style.css/'
+import './style.css'
 import { useState } from 'react'
+
 
 export default function AdicionarUsuario() {
    const [nome, setNome] = useState('')
@@ -17,6 +18,7 @@ export default function AdicionarUsuario() {
         setNome ('')
         setEmail ('')
     }
+    
    }
     return (
         // Criando HTML da pagina.
@@ -29,6 +31,12 @@ export default function AdicionarUsuario() {
                 placeholder='Nome'
                 value={nome}
                 onChange={(e) => setNome (e.target.value)} 
+                />
+                <input 
+                type="text"
+                placeholder='E-mail'
+                value={email}
+                onChange={(e) => setEmail (e.target.value)} 
                 />
 
                 <button type='submit'> Adicionar </button>

@@ -1,4 +1,4 @@
-import '.style.css/'
+import './style.css'
 
 export default function Header() {
     return (
@@ -6,5 +6,4 @@ export default function Header() {
             <div>Sistema de Clientes</div>
         </header>
     )
-    
 }
