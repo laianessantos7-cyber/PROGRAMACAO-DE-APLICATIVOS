@@ -1,0 +1,67 @@
+.app {
+  background-color: #111;
+  border: 2px solid red;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 400px;
+  box-shadow: 0 0 20px red;
+}
+
+main {
+  margin: 20px 0;
+}
+.header {
+  background-color: black;
+  color: red;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 2px solid red;
+}
+
+.footer {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #aaa;
+}
+
+.formulario h2 {
+  color: red;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  background: #1a1a1a;
+  border: 1px solid red;
+  color: white;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: red;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: darkred;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #1a1a1a;
+  margin: 5px 0;
+  padding: 10px;
+  border-left: 3px solid red;
+}
